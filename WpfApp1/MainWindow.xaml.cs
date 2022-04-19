@@ -29,5 +29,19 @@ namespace WpfApp1
         {
             number.Text = numberTextBox.Text;
         }
+
+        private void numberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !int.TryParse(e.Text, out int result);
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton)
+            {
+                number.Text = radioButton.Content.ToString();
+            }
+        }
+
     }
 }
